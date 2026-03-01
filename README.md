@@ -33,6 +33,10 @@
 |:---:|:---:|:---:|
 | ![纸类](images/sample_paper.jpg) | ![金属](images/sample_metal.jpg) | ![玻璃](images/sample_glass.jpg) |
 
+### Web 识别界面
+
+![Web界面](images/web_interface.png)
+
 ## 使用方法
 
 ### 安装依赖
