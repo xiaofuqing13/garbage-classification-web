@@ -1,6 +1,6 @@
 ﻿# 垃圾分类识别系统
 
-垃圾分类在国内推行以来，很多人还是分不清"干垃圾"和"湿垃圾"、"可回收"和"不可回收"的区别，扔错垃圾的情况屡见不鲜。本项目做了一个拍照识别垃圾类别的 Web 应用拍张照片上传，系统自动告诉你这是什么垃圾、属于哪一类，省去翻查分类手册的麻烦。
+垃圾分类在国内推行以来，很多人还是分不清"干垃圾"和"湿垃圾"、"可回收"和"不可回收"的区别，扔错垃圾的情况屡见不鲜。本项目做了一个拍照识别垃圾类别的 Web 应用——拍张照片上传，系统自动告诉你这是什么垃圾、属于哪一类，省去翻查分类手册的麻烦。
 
 ## 痛点与目的
 
@@ -31,44 +31,44 @@
 
 ### 安装依赖
 
-`ash
+```bash
 pip install -r requirements.txt
-`
+```
 
 ### 训练模型
 
-`ash
+```bash
 python train_sklearn_model.py
-`
+```
 
 训练完成后会生成：
-- `feature_extractor.h5`  MobileNetV2 特征提取模型
-- `svm_model.joblib`  SVM 分类器
-- `label_encoder.joblib`  标签编码器
+- `feature_extractor.h5` — MobileNetV2 特征提取模型
+- `svm_model.joblib` — SVM 分类器
+- `label_encoder.joblib` — 标签编码器
 
 ### 启动 Web 服务
 
-`ash
+```bash
 python app.py
-`
+```
 
 浏览器打开 `http://localhost:5000`，上传垃圾图片即可查看分类结果。
 
 ## 项目结构
 
-`
+```
 .
- app.py                    # Flask Web 服务（主程序）
- train_sklearn_model.py    # 模型训练脚本
- feature_extractor.h5      # MobileNetV2 特征提取器
- svm_model.joblib          # 训练好的 SVM 分类器
- label_encoder.joblib      # 标签编码器
- mymodel.keras             # Keras 端到端模型（备用）
- templates/                # Flask HTML 模板
- static/                   # 静态资源和上传目录
- archive/                  # 数据集（需自行准备）
- requirements.txt          # 依赖列表
-`
+├── app.py                    # Flask Web 服务（主程序）
+├── train_sklearn_model.py    # 模型训练脚本
+├── feature_extractor.h5      # MobileNetV2 特征提取器
+├── svm_model.joblib          # 训练好的 SVM 分类器
+├── label_encoder.joblib      # 标签编码器
+├── mymodel.keras             # Keras 端到端模型（备用）
+├── templates/                # Flask HTML 模板
+├── static/                   # 静态资源和上传目录
+├── archive/                  # 数据集（需自行准备）
+└── requirements.txt          # 依赖列表
+```
 
 ## 技术栈
 
