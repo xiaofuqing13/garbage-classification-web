@@ -1,22 +1,16 @@
-# Python
+﻿# Python
 __pycache__/
 *.py[cod]
-*$py.class
-*.egg-info/
-dist/
-build/
 venv/
 env/
 
-# Model weights
+# Models
 *.h5
 *.keras
 *.joblib
 
 # Data
 archive/
-
-# Uploads
 static/uploads/
 
 # macOS
