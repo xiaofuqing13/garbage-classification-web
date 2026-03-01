@@ -1,0 +1,77 @@
+/*
+垃圾分类系统样式表
+
+这个样式表定义了垃圾分类系统的界面样式，包括：
+1. 整体布局和背景
+2. 卡片样式
+3. 按钮样式
+4. 图片预览样式
+5. 文字样式
+
+作者：Claude
+日期：2024-02-10
+*/
+
+/* 页面背景 */
+body {
+    background-color: #f8f9fa;
+}
+
+/* 卡片阴影效果 */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 移除卡片头部边框 */
+.card-header {
+    border-bottom: none;
+}
+
+/* 按钮样式 */
+.btn-primary {
+    padding: 10px 30px;
+    font-size: 1.1em;
+}
+
+/* 图片预览样式 */
+#preview-image {
+    max-height: 300px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+/* 表单控件样式 */
+.form-control {
+    padding: 12px;
+}
+
+/* 说明文字样式 */
+.lead {
+    color: #666;
+}
+
+/* 结果卡片高度 */
+#result .card {
+    height: 100%;
+}
+
+/* 结果文字样式 */
+.card-body p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* 置信度显示样式 */
+#confidence {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* 预测类别显示样式 */
+#predicted-class {
+    color: #007bff;
+    font-weight: bold;
+} 

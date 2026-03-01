@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+venv/
+env/
+
+# Model weights
+*.h5
+*.keras
+*.joblib
+
+# Data
+archive/
+
+# Uploads
+static/uploads/
+
+# macOS
+.DS_Store
+._*
+
+# IDE
+.idea/
+.vscode/

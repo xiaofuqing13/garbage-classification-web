@@ -1,0 +1,135 @@
+<!--
+垃圾分类系统Web界面
+
+这个模板实现了一个简单而美观的垃圾分类上传和展示界面。
+功能：
+1. 图片上传
+2. 图片预览
+3. 分类结果显示
+4. 置信度显示
+
+作者：Claude
+日期：2024-02-10
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能垃圾分类系统</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 自定义样式 -->
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <!-- 主卡片容器 -->
+                <div class="card">
+                    <!-- 标题区域 -->
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>智能垃圾分类系统</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- 说明文字 -->
+                        <div class="text-center mb-4">
+                            <p class="lead">上传垃圾图片，AI将帮您进行智能分类</p>
+                        </div>
+                        
+                        <!-- 上传表单 -->
+                        <form id="upload-form" class="mb-4">
+                            <div class="mb-3">
+                                <label for="image-input" class="form-label">选择图片</label>
+                                <input type="file" class="form-control" id="image-input" accept="image/*" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">开始识别</button>
+                            </div>
+                        </form>
+
+                        <!-- 结果显示区域 -->
+                        <div id="result" class="mt-4" style="display: none;">
+                            <div class="row">
+                                <!-- 图片预览 -->
+                                <div class="col-md-6">
+                                    <img id="preview-image" class="img-fluid rounded" alt="预览图">
+                                </div>
+                                <!-- 分类结果 -->
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header bg-success text-white">
+                                            识别结果
+                                        </div>
+                                        <div class="card-body">
+                                            <p><strong>分类：</strong><span id="predicted-class"></span></p>
+                                            <p><strong>置信度：</strong><span id="confidence"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery库 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- 页面交互脚本 -->
+    <script>
+        $(document).ready(function() {
+            // 处理表单提交
+            $('#upload-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                // 准备表单数据
+                var formData = new FormData();
+                var fileInput = $('#image-input')[0];
+                formData.append('file', fileInput.files[0]);
+
+                // 发送AJAX请求
+                $.ajax({
+                    url: '/predict',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.error) {
+                            alert(response.error);
+                            return;
+                        }
+                        
+                        // 显示预测结果
+                        $('#predicted-class').text(response.class);
+                        $('#confidence').text(response.confidence);
+                        $('#preview-image').attr('src', '/' + response.image_path);
+                        $('#result').show();
+                    },
+                    error: function() {
+                        alert('识别过程中发生错误，请重试');
+                    }
+                });
+            });
+
+            // 图片预览功能
+            $('#image-input').change(function() {
+                var file = this.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#preview-image').attr('src', e.target.result);
+                        $('#result').show();
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
