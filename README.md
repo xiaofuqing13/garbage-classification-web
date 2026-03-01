@@ -1,5 +1,8 @@
 # 垃圾分类识别系统
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)
+
+
 垃圾分类在国内推行以来，很多人还是分不清"干垃圾"和"湿垃圾"、"可回收"和"不可回收"的区别，扔错垃圾的情况屡见不鲜。本项目做了一个拍照识别垃圾类别的 Web 应用——拍张照片上传，系统自动告诉你这是什么垃圾、属于哪一类，省去翻查分类手册的麻烦。
 
 ## 痛点与目的
