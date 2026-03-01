@@ -27,6 +27,12 @@
 2. **分类器**：用提取到的特征训练 SVM 分类器（RBF 核，交叉验证调参）
 3. **Web 服务**：Flask 框架搭建上传页面，后端加载模型实时推理
 
+## 数据集样本
+
+| 纸类 | 金属 | 玻璃 |
+|:---:|:---:|:---:|
+| ![纸类](images/sample_paper.jpg) | ![金属](images/sample_metal.jpg) | ![玻璃](images/sample_glass.jpg) |
+
 ## 使用方法
 
 ### 安装依赖
